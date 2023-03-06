@@ -34,4 +34,52 @@
     }
   }
 
-  ..
+  const filterTodos = () => {
+    clearTodos();
+    let userId = parseInt(document.getElementById('userid').value);
+    const filteredArrayOfTodos = arrayOfTodos.filter((todo) => {
+      return todo.userId === userId;
+    })
+
+    for (let i = 0; i<filteredArrayOfTodos.length; i++) {
+      let todoTitle = filteredArrayOfTodos[i].title;
+      let li = document.createElement('li')
+      let text = document.createTextNode(todoTitle)
+      li.appendChild(text);
+      document.getElementById('todo-list').appendChild(li);
+    }
+  }
+
+  const completedTodos = () => {
+    clearTodos();
+    const filteredArrayOfTodos = arrayOfTodos.filter((todo) => {
+      return todo.completed === true;
+    })
+
+    for (let i = 0; i<filteredArrayOfTodos.length; i++) {
+      let todoTitle = filteredArrayOfTodos[i].title;
+      let li = document.createElement('li')
+      let text = document.createTextNode(todoTitle)
+      li.appendChild(text);
+      document.getElementById('todo-list').appendChild(li);
+    }
+  }
+
+  const incompleteTodos = () => {
+    clearTodos();
+    const filteredArrayOfTodos = arrayOfTodos.filter((todo) => {
+      return todo.completed === false;
+    })
+
+    for (let i = 0; i<filteredArrayOfTodos.length; i++) {
+      let todoTitle = filteredArrayOfTodos[i].title;
+      let li = document.createElement('li')
+      let text = document.createTextNode(todoTitle)
+      li.appendChild(text);
+      document.getElementById('todo-list').appendChild(li);
+    }
+  }
+
+  const clearTodos = () => {
+    document.getElementById('todo-list').innerHTML='';
+  }
